@@ -1,10 +1,12 @@
 package ua.nure.silin.spring5recipeapp.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+@Entity
 public class UnitOfMeasure {
 
     @Id

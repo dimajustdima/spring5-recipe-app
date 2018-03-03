@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.util.Arrays.asList;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -30,6 +31,7 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+    @Lob
     private String directions;
     @OneToMany(cascade = ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
@@ -199,6 +201,11 @@ public class Recipe {
             return this;
         }
 
+        public RecipeBuilder fromIngredients(Ingredient ...ingredients) {
+            this.ingredients.addAll(asList(ingredients));
+            return this;
+        }
+
         public RecipeBuilder withImage(Byte[] image) {
             this.image = image;
             return this;
@@ -210,12 +217,17 @@ public class Recipe {
         }
 
         public RecipeBuilder ofDifficulty(Difficulty difficulty) {
-            this.notes = notes;
+            this.difficulty = difficulty;
             return this;
         }
 
         public RecipeBuilder ofCategories(Set<Category> categories) {
             this.categories.addAll(categories);
+            return this;
+        }
+
+        public RecipeBuilder ofCategories(Category ...categories) {
+            this.categories.addAll(asList(categories));
             return this;
         }
 
