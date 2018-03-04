@@ -2,28 +2,85 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
     <title>Recipe Home</title>
 </head>
 <body>
-<h1>My Recipes!</h1>
-<table>
-    <tr>
-        <th>Description</th>
-        <th>Prep. time</th>
-        <th>Cooking time</th>
-        <th>Servings</th>
-        <th>Source</th>
-        <th>URL</th>
-    </tr>
-    <tr th:each="recipe: ${recipes}">
-        <td th:text="${recipe.description}">---</td>
-        <td th:text="${recipe.prepTime}">---</td>
-        <td th:text="${recipe.cookTime}">---</td>
-        <td th:text="${recipe.servings}">---</td>
-        <td th:text="${recipe.source}">---</td>
-        <td th:text="${recipe.url}">---</td>
-        <td><button>View details</button></td>
-    </tr>
-</table>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary" style="margin-top: 20px">
+                <div class="panel-heading">
+                    <h1 class="panel-title">My Recipes!</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
+                        <table class="table table-hover table-condensed">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>Description</th>
+                                <th>Prep. time</th>
+                                <th>Cooking time</th>
+                                <th>Servings</th>
+                                <th>Source</th>
+                                <th>URL</th>
+                            </tr>
+                            </thead>
+                            <!-- Dummy data to be displayed when opening via browser -->
+                            <tr th:remove="all">
+                                <td>test description1</td>
+                                <td>test prep. time1</td>
+                                <td>test cooking time1</td>
+                                <td>test servings1</td>
+                                <td>test source1</td>
+                                <td>test URL1</td>
+                                <td>
+                                    <button class="btn btn-info">View details</button>
+                                </td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td>test description2</td>
+                                <td>test prep. time2</td>
+                                <td>test cooking time2</td>
+                                <td>test servings2</td>
+                                <td>test source2</td>
+                                <td>test URL2</td>
+                                <td>
+                                    <button class="btn btn-info">View details</button>
+                                </td>
+                            </tr>
+                            <tr th:each="recipe: ${recipes}">
+                                <td th:text="${recipe.description}">---</td>
+                                <td th:text="${recipe.prepTime}">---</td>
+                                <td th:text="${recipe.cookTime}">---</td>
+                                <td th:text="${recipe.servings}">---</td>
+                                <td th:text="${recipe.source}">---</td>
+                                <td th:text="${recipe.url}">---</td>
+                                <td>
+                                    <button class="btn btn-info">View details</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 </body>
 </html>
