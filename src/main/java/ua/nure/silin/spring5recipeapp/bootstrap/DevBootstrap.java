@@ -1,5 +1,6 @@
 package ua.nure.silin.spring5recipeapp.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,7 @@ import static ua.nure.silin.spring5recipeapp.domain.Difficulty.EASY;
 import static ua.nure.silin.spring5recipeapp.domain.Difficulty.MEDIUM;
 
 @Component
+@Slf4j
 public class DevBootstrap  implements ApplicationListener<ContextRefreshedEvent> {
 
     private CategoryService categoryService;
@@ -52,6 +54,9 @@ public class DevBootstrap  implements ApplicationListener<ContextRefreshedEvent>
     }
 
     private void initializeData() {
+
+        log.info("Initializing data...");
+
         List<UnitOfMeasure> measureUnits = unitOfMeasureService.getAllMeasureUnits();
         UnitOfMeasure unit = getUnit(measureUnits, "Unit");
         UnitOfMeasure teaspoon = getUnit(measureUnits, "Teaspoon");
@@ -106,6 +111,9 @@ public class DevBootstrap  implements ApplicationListener<ContextRefreshedEvent>
         notesService.save(guacamoleNotes);
 
 
+        log.info("Recipe created: " + guacamole);
+
+
         //Initialize chicken taco here
         String chickenTacoDirections = "1 Prepare a gas or charcoal grill for medium-high, direct heat.\n" +
                 "2 Make the marinade and coat the chicken.\n" +
@@ -148,6 +156,9 @@ public class DevBootstrap  implements ApplicationListener<ContextRefreshedEvent>
 
         chickenTacoNotes.setRecipe(chickenTaco);
         notesService.save(chickenTacoNotes);
+
+
+        log.info("Recipe created: " + chickenTaco);
     }
 
     private UnitOfMeasure getUnit(List<UnitOfMeasure> units, String description) {
