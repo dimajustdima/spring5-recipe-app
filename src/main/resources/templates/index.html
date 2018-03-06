@@ -43,7 +43,7 @@
                                 <td>test source1</td>
                                 <td>test URL1</td>
                                 <td>
-                                    <button class="btn btn-info">View details</button>
+                                    <button class="btn btn-info btn-sm">View details</button>
                                 </td>
                             </tr>
                             <tr th:remove="all">
@@ -54,7 +54,7 @@
                                 <td>test source2</td>
                                 <td>test URL2</td>
                                 <td>
-                                    <button class="btn btn-info">View details</button>
+                                    <button class="btn btn-info btn-sm">View details</button>
                                 </td>
                             </tr>
                             <tr th:each="recipe: ${recipes}">
@@ -65,7 +65,7 @@
                                 <td th:text="${recipe.source}">---</td>
                                 <td th:text="${recipe.url}">---</td>
                                 <td>
-                                    <button class="btn btn-info">View details</button>
+                                    <button class="btn btn-info btn-sm">View details</button>
                                 </td>
                             </tr>
                         </table>
@@ -76,11 +76,5 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
 </body>
 </html>
