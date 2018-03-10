@@ -18,6 +18,8 @@
     <title>Show Recipe</title>
 </head>
 <body>
+<!--/*@thymesVar id="recipe" type="ua.nure.silin.spring5recipeapp.domain.Recipe"*/-->
+<!--/*@thymesVar id="category" type="ua.nure.silin.spring5recipeapp.domain.Category"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -32,7 +34,8 @@
                                 <h5>Categories:</h5>
                             </div>
                             <div class="col-md-9">
-                                <ul>
+                                <span th:each="category: ${recipe.categories}" th:text="${category.description} + '; '">default category</span>
+                                <ul th:remove="all">
                                     <li>category 1</li>
                                     <li>category 2</li>
                                     <li>category 3</li>
@@ -40,17 +43,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="coll-md-3">
+                            <div class="col-md-3">
                                 <h5>Prep Time:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p>30 min</p>
+                                <p th:text="${recipe.prepTime} + ' min.'">default prep. time</p>
+                                <p th:remove="all">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <h5>Difficulty:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p>Easy</p>
+                                <p th:text="${recipe.difficulty}">default difficulty</p>
+                                <p th:remove="all">Easy</p>
                             </div>
                         </div>
                         <div class="row">
@@ -58,13 +63,15 @@
                                 <h5>Cooktime:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p>30 min</p>
+                                <p th:text="${recipe.cookTime} + ' min.'">default cook time</p>
+                                <p th:remove="all">30 min</p>
                             </div>
                             <div class="col-md-3">
                                 <h5>Servings:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p>4</p>
+                                <p th:text="${recipe.servings}">default servings</p>
+                                <p th:remove="all">4</p>
                             </div>
                         </div>
                         <div class="row">
@@ -72,13 +79,15 @@
                                 <h5>Source:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p>example.com</p>
+                                <p th:text="${recipe.source}">default source</p>
+                                <p th:remove="all">example.com</p>
                             </div>
                             <div class="col-md-3">
                                 <h5>URL:</h5>
                             </div>
                             <div class="col-md-3">
-                                <p>http://www.example.com</p>
+                                <p th:text="${recipe.url}">default url</p>
+                                <p th:remove="all">http://www.example.com</p>
                             </div>
                         </div>
                     </div>
@@ -90,7 +99,11 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <ul>
+                                <ul th:each="ingredient: ${recipe.ingredients}">
+                                    <!--@thymesVar id="ingredient" type="ua.nure.silin.spring5recipeapp.domain.Ingredient"-->
+                                    <li th:text="${ingredient.amount} + ' ' + ${ ingredient.uom.description} + '(s) of ' + ${ingredient.description}">default ingredient info</li>
+                                </ul>
+                                <ul th:remove="all">
                                     <li>1 Cup of milk</li>
                                     <li>1 Teaspoon of chocolate</li>
                                     <li>1 Teaspoon of Sugar</li>
@@ -101,12 +114,13 @@
                 </div>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel title">Directions</h1>
+                        <h1 class="panel-title">Directions</h1>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                                <p th:text="${recipe.directions}">default directions</p>
+                                <p th:remove="all">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                                     Aenean commodo ligula eget dolor. Aenean massa.
                                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                                     Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
@@ -134,7 +148,8 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                                <p th:text="${recipe.notes.recipeNotes}">default notes</p>
+                                <p th:remove="all">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                                     Aenean commodo ligula eget dolor. Aenean massa.
                                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                                     Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.

@@ -6,6 +6,8 @@ import ua.nure.silin.spring5recipeapp.repository.RecipeRepository;
 
 import java.util.List;
 
+import static java.lang.String.format;
+
 @Service
 public class DefaulteRecipeService implements RecipeService {
 
@@ -24,5 +26,11 @@ public class DefaulteRecipeService implements RecipeService {
     public List<Recipe> getAllRecipes()
     {
         return (List<Recipe>) recipeRepository.findAll();
+    }
+
+    @Override
+    public Recipe getRecipeById(Long id) {
+        return recipeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException(format("Recipe not found! Id: %d", id)));
     }
 }
