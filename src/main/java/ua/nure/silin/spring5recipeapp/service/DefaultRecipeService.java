@@ -9,11 +9,11 @@ import java.util.List;
 import static java.lang.String.format;
 
 @Service
-public class DefaulteRecipeService implements RecipeService {
+public class DefaultRecipeService implements RecipeService {
 
     private RecipeRepository recipeRepository;
 
-    public DefaulteRecipeService(RecipeRepository recipeRepository) {
+    public DefaultRecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
