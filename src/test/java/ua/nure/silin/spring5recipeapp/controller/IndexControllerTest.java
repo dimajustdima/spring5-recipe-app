@@ -4,6 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 import ua.nure.silin.spring5recipeapp.domain.Recipe;
 import ua.nure.silin.spring5recipeapp.service.RecipeService;
@@ -31,6 +35,14 @@ public class IndexControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         indexController = new IndexController(recipeService);
+    }
+
+    @Test
+    public void shouldReturnIndexViewOnGetRequest() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name(VIEW_NAME));
     }
 
     @Test
