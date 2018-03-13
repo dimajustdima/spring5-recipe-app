@@ -95,6 +95,7 @@ public class DevBootstrap  implements ApplicationListener<ContextRefreshedEvent>
                 .ofDifficulty(EASY)
                 .ofCategories(mexican, vegan)
                 .withNotes(guacamoleNotes)
+                .withUrl("www.example.com")
                 .build();
 
         mexican.getRecipes().add(guacamole);
@@ -143,6 +144,7 @@ public class DevBootstrap  implements ApplicationListener<ContextRefreshedEvent>
                 .ofDifficulty(MEDIUM)
                 .ofCategories(dinner, grill)
                 .withNotes(chickenTacoNotes)
+                .withUrl("www.example.com")
                 .build();
         dinner.getRecipes().add(chickenTaco);
         grill.getRecipes().add(chickenTaco);

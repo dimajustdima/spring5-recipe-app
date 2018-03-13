@@ -105,6 +105,11 @@ public class Recipe {
             return this;
         }
 
+        public RecipeBuilder withUrl(String url) {
+            this.url = url;
+            return this;
+        }
+
         public RecipeBuilder withImage(Byte[] image) {
             this.image = image;
             return this;
