@@ -14,7 +14,7 @@ import ua.nure.silin.spring5recipeapp.service.RecipeService;
 @RunWith(SpringRunner.class)
 public class RecipeControllerTest {
 
-    private static final String REQUEST_URL = "/recipe/show/1";
+    private static final String REQUEST_URL = "/recipe/1/show";
     private static final String VIEW_NAME = "recipe/show";
 
     private MockMvc mockMvc;
