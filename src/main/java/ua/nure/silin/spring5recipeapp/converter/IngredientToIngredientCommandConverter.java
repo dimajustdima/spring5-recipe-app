@@ -23,6 +23,7 @@ public class IngredientToIngredientCommandConverter implements Converter<Ingredi
         ingredientCommand.setDescription(source.getDescription());
         ingredientCommand.setAmount(source.getAmount());
         ingredientCommand.setUom(uomConverter.convert(source.getUom()));
+        ingredientCommand.setRecipeId(source.getRecipe().getId());
         return ingredientCommand;
     }
 }
