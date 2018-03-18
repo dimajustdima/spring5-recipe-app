@@ -92,11 +92,11 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-md-11">
+                                <div class="col-md-9">
                                     <h1 class="panel-title">Ingredients</h1>
                                 </div>
-                                <div class="col-md-1">
-                                    <a href="#" class="btn btn-default" role="button">View/Edit</a>
+                                <div class="col-md-3">
+                                    <a class="btn btn-default pull-right" href="#" th:href="@{'/recipe/'+${recipe.id}+'/ingredients'}" role="button">View/Edit</a>
                                 </div>
                             </div>
                         </div>
