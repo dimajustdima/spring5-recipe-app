@@ -20,6 +20,7 @@
 <body>
 <!--@thymesVar id="recipe" type="ua.nure.silin.spring5recipeapp.command.RecipeCommand"-->
 <!--@thymesVar id="difficultyValue" type="ua.nure.silin.spring5recipeapp.domain.Difficulty"-->
+<!--@thymesVar id="category" type="ua.nure.silin.spring5recipeapp.command.CategoryCommand"-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -40,21 +41,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 form-group">
+                                <div class="col-md-2 form-group">
                                     <label>Categories:</label>
                                 </div>
-                                <div class="col-md-3 form-group">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="checkbox" value="" />
-                                            Category 1
-                                        </label>
-                                    </div>
-                                    <div class="radio" th:remove="all">
-                                        <label>
-                                            <input type="checkbox" value="" />
-                                            Category 2
-                                        </label>
+                                <div class="col-md-4 form-group">
+                                    <div class="row">
+                                        <div class="col-md-12" th:if="${not #lists.isEmpty(recipe.categories)}">
+                                            <div th:each="category : ${recipe.categories}">
+                                                <p th:text="${category.description}"></p>
+                                                <a href="#" class="btn-link"
+                                                   th:href="@{'/recipe/'+${recipe.id}+'/category/'+${category.id}+'/remove'}">
+                                                    Remove
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
