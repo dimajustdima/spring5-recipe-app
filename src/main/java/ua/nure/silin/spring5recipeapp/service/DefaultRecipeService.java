@@ -5,6 +5,7 @@ import ua.nure.silin.spring5recipeapp.command.RecipeCommand;
 import ua.nure.silin.spring5recipeapp.converter.RecipeCommandToRecipeConverter;
 import ua.nure.silin.spring5recipeapp.converter.RecipeToRecipeCommandConverter;
 import ua.nure.silin.spring5recipeapp.domain.Recipe;
+import ua.nure.silin.spring5recipeapp.exception.RecipeNotFoundException;
 import ua.nure.silin.spring5recipeapp.repository.RecipeRepository;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class DefaultRecipeService implements RecipeService {
     @Override
     public Recipe getRecipeById(Long id) {
         return recipeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException(format("Recipe not found! Id: %d", id)));
+                .orElseThrow(() -> new RecipeNotFoundException(format("Recipe not found! Id: %d", id)));
     }
 
     @Override

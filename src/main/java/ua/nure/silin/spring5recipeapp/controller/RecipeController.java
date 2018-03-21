@@ -1,14 +1,18 @@
 package ua.nure.silin.spring5recipeapp.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import ua.nure.silin.spring5recipeapp.command.RecipeCommand;
 import ua.nure.silin.spring5recipeapp.domain.Recipe;
+import ua.nure.silin.spring5recipeapp.exception.RecipeNotFoundException;
 import ua.nure.silin.spring5recipeapp.service.RecipeService;
 
 import static java.lang.Long.valueOf;
@@ -53,5 +57,12 @@ public class RecipeController {
     public String deleteRecipe(@PathVariable String id) {
         recipeService.deleteRecipe(valueOf(id));
         return "redirect:/";
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleRecipeNotFound(RecipeNotFoundException e, Model model) {
+        model.addAttribute("exception", e);
+        return "error/404";
     }
 }

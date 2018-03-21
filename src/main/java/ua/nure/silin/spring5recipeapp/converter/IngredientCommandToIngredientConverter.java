@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ua.nure.silin.spring5recipeapp.command.IngredientCommand;
 import ua.nure.silin.spring5recipeapp.domain.Ingredient;
 import ua.nure.silin.spring5recipeapp.domain.Recipe;
+import ua.nure.silin.spring5recipeapp.exception.RecipeNotFoundException;
 import ua.nure.silin.spring5recipeapp.repository.RecipeRepository;
 
 import static java.lang.String.format;
@@ -34,6 +35,6 @@ public class IngredientCommandToIngredientConverter implements Converter<Ingredi
 
     private Recipe getRecipe(Long recipeId) {
         return recipeRepository.findById(recipeId)
-                .orElseThrow(() -> new RuntimeException(format("Recipe with id %d not found.", recipeId)));
+                .orElseThrow(() -> new RecipeNotFoundException(format("Recipe with id %d not found.", recipeId)));
     }
 }
